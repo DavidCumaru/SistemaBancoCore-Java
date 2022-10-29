@@ -10,14 +10,17 @@ import java.util.List;
 import org.junit.Test;
 
 public class GerenciadoraClienteTeste {
-	
+	private GerenciadoraClientes gerClientes;
 	@Test
 	public void testePesquisaCliente() {
+		/************Montagem do cenario***************/	
+	 	int idCliente01 = 1;
+	 	int idCliente02 = 2;
 		//Definição e inicialização
 		/*criando clientes para instaciar no caso de Teste*/
 		
-		Cliente cliente01 = new Cliente(1, "Clayton", 47, "clayton@gmail.com", 1 ,true);
-		Cliente cliente02 = new Cliente(2, "Maria", 10, "maria@gmail.com", 1 ,true);
+		Cliente cliente01 = new Cliente(idCliente01, "Clayton", 47, "clayton@gmail.com", 1 ,true);
+		Cliente cliente02 = new Cliente(idCliente02, "Maria", 10, "maria@gmail.com", 1 ,true);
 		
 		List <Cliente> clientes = new ArrayList();
 		clientes.add(cliente01);
@@ -32,10 +35,7 @@ public class GerenciadoraClienteTeste {
 		
 		Cliente cliente2 = gerClientes.pesquisaCliente(2);
 		assertThat(cliente2.getId(), is(2));
-		assertThat(cliente2.getEmail(), is("maria@gmail.com"));
-		
-				
-		
+		assertThat(cliente2.getEmail(), is("maria@gmail.com"));	
 	}
 	
 	@Test
@@ -52,9 +52,13 @@ public class GerenciadoraClienteTeste {
 	/* Remover do Clayton
 	@test
 	public void testeRemoveCliente(){
+	
+	 	//************Montagem do cenario***************	
+	 	int idCliente01 = 1;
+	 	int idCliente02 = 2;
 	 	***montagem do cenário do teste***
-		Cliente cliente01 = new Cliente(1, "Clayton", 47, "clayton@gmail.com", 1 ,true);
-	 	Cliente cliente02 = new Cliente(2, "Maria", 10, "maria@gmail.com", 1 ,true);
+		Cliente cliente01 = new Cliente(idCliente01, "Clayton", 47, "clayton@gmail.com", 1 ,true);
+	 	Cliente cliente02 = new Cliente(idCliente02, "Maria", 10, "maria@gmail.com", 1 ,true);
 	  
 	 	List <Cliente> clientes = new ArrayList();
 	  
@@ -64,12 +68,12 @@ public class GerenciadoraClienteTeste {
 	 	GerenciadoraClientes gerClientes = new GerenciadoraClientes(clientes);
 	 
 	  	***Fase de execução do teste***
-	  	boolean clienteRemovido = gerClientes.removeCliente(2);
+	  	boolean clienteRemovido = gerClientes.removeCliente(idCliente02);
 	  
 	  	***Análise do resultado***
 	  	assertThat(clienteRemovido, is(true));
 	  	assertThat(gerClientes.getClientesDoBanco().size(), is(1));
-	  	assertNull(gerClientes.pesquisaCliente(2));
+	  	assertNull(gerClientes.pesquisaCliente(idCliente02));
 	  	
 	}  
 */
@@ -77,6 +81,7 @@ public class GerenciadoraClienteTeste {
 	@Test
 	public void testeRemoveCliente(){
 		Cliente cliente01 = new Cliente(1, "Clayton", 47, "clayton@gmail.com", 1 ,true);
+		Cliente cliente02 = new Cliente(2, "Maria", 10, "maria@gmail.com", 1 ,true);
 		List <Cliente> clientes = new ArrayList();
 		GerenciadoraClientes gerClientes = new GerenciadoraClientes(clientes);
 		gerClientes.adicionaCliente(cliente01);

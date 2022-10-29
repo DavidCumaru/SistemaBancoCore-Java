@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class GerenciadoraContaCorrentesTeste {
+	private GerenciadoraContas gerContas;
     @Test
 	public void testePesquisaContaCorrente() {
 		/*criando ContaCorrentes para instaciar no caso de Teste*/
@@ -66,7 +67,7 @@ public class GerenciadoraContaCorrentesTeste {
 	public void testeTransfereValor(){
 		ContaCorrente contaCorrente01 = new ContaCorrente(1, 5000, true);
 		ContaCorrente contaCorrente02 = new ContaCorrente(2, 5000, true);
-		List <ContaCorrente> contasCorrentes = new ArrayList();
+		List<ContaCorrente> contasCorrentes = new ArrayList();
 		contasCorrentes.add(contaCorrente01);
 		contasCorrentes.add(contaCorrente02);
 		GerenciadoraContas gerContaCorrentes = new GerenciadoraContas(contasCorrentes);
@@ -76,4 +77,32 @@ public class GerenciadoraContaCorrentesTeste {
 		assertThat(contaCorrente01.getSaldo(), is(4900.0));
 		assertThat(contaCorrente02.getSaldo(), is(5100.0));
 	}
+	/*
+	//TesteTransfereValor do Clayton
+	public void testeTransfereValor(){
+	  	//**********Montar o cenario**********
+	  	int idConta01 = 1;
+	  	int idConta02 = 2;
+	  	 
+	  	 
+	  	ContaCorrente conta01 = new ContaCorrente(idConta01, 200, true);
+	  	ContaCorrente conta02 = new ContaCorrente(idConta02, 0, true);
+	  	
+	  	List<ContaCorrente> contaDoBanco = new ArrayList<>();
+	  	contaDoBanco.add(conta01);
+		contaDoBanco.add(conta02);
+	  	
+	  	gerContas = new GerenciadoraContas(contaDoBanco);
+	  	
+	  	//*********Execução do negocio selecionado para o Teste********
+	  	boolean sucesso = gerContas.transfereValor(idConta01, 100, idConta02);
+	  	
+	  	//*******Verificação e Analise*******
+	  	assertTrue(sucesso);
+	  	assertThat(conta01.getSaldo(), is(100.0));  
+	  	assertThat(conta02.getSaldo(), is(100.0));
+	  		  	  
+	}
+	 */
+	
 }
